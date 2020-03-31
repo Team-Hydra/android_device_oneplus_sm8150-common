@@ -5,8 +5,7 @@ vendor/lib/libadsp_default_listener.so
 vendor/lib64/libadsp_default_listener.so
 
 # ADSP Modules
-vendor/lib/rfsa/adsp/capi_v2_aptX_Classic.so
-vendor/lib/rfsa/adsp/capi_v2_aptX_HD.so
+vendor/lib/rfsa/adsp/capi_v2_aptX_CLHDAD_Encoder.so
 vendor/lib/rfsa/adsp/libapps_mem_heap.so
 vendor/lib/rfsa/adsp/libarcsoft_dualcam_refocus_skel.so
 vendor/lib/rfsa/adsp/libarcsoft_hdrplus_hvx_skel.so
@@ -175,7 +174,6 @@ vendor/lib/camera/components/com.vidhance.stats.aec_dmbr.so
 vendor/lib/camera/components/libdepthmapwrapper.so
 vendor/lib/libSTDualCamCaptureWT.so
 vendor/lib/lib_bokehlib.so
-vendor/lib/lib_oneplus_watermark.so
 vendor/lib/libarcsoft_beautyshot.so
 vendor/lib/libarcsoft_distortion_correction.so
 vendor/lib/libarcsoft_dualcam_bokeh_api.so
@@ -216,8 +214,10 @@ vendor/lib/libtriplecam_video_optical_zoom.so
 vendor/lib/libvideoutils.so
 vendor/lib/libvidhance.so
 vendor/lib/libvl53l1_daemon.so
+vendor/lib/libyuv_watermark.so
 vendor/lib/sensors.hal.tof.so
 vendor/lib/vendor.oneplus.camera.CameraMDMHIDL@1.0.so
+vendor/lib/vendor.oneplus.hardware.translation@1.0.so
 vendor/lib64/camera/fdconfigpreview.bin
 vendor/lib64/camera/fdconfigpreviewlite.bin
 vendor/lib64/camera/fdconfigvideo.bin
@@ -314,8 +314,10 @@ vendor/lib64/libtriplecam_optical_zoom_control.so
 vendor/lib64/libtriplecam_video_optical_zoom.so
 vendor/lib64/libvidhance.so
 vendor/lib64/libvl53l1_daemon.so
+vendor/lib64/libyuv_watermark.so
 vendor/lib64/sensors.hal.tof.so
 vendor/lib64/vendor.oneplus.camera.CameraMDMHIDL@1.0.so
+vendor/lib64/vendor.oneplus.hardware.translation@1.0.so
 
 # Camera firmware
 vendor/firmware/CAMERA_ICP.elf
@@ -903,7 +905,7 @@ vendor/etc/init/android.hardware.neuralnetworks@1.2-service-qti.rc
 vendor/lib64/libhexagon_nn_stub.so
 
 # NFC
--app/NxpNfcNci/NxpNfcNci.apk|f349310c6b67ad1d7c7a6b58be3ff686481d0e96
+-app/NxpNfcNci/NxpNfcNci.apk|3ee559a8d5e83fdb0e49c82a6ae8674811ecbb37
 -app/NxpSecureElement/NxpSecureElement.apk
 etc/nfcee_access.xml|7cd3666e903171a91db8a7f87312ca452badaa8c
 etc/permissions/com.nxp.nfc.xml
