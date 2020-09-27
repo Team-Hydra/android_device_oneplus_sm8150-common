@@ -1,4 +1,4 @@
-#!/bin/bash
+git fetch "https://github.com/LineageOS/android_device_oneplus_sm8150-common" refs/changes/33/289633/6 && git cherry-pick FETCH_HEAD#!/bin/bash
 #
 # Copyright (C) 2018-2019 The LineageOS Project
 #
@@ -43,12 +43,6 @@ function blob_fixup() {
         ;;
     product/lib64/libdpmframework.so)
         sed -i "s/libhidltransport.so/libcutils-v29.so\x00\x00\x00/" "${2}"
-        ;;
-    vendor/lib/hw/camera.qcom.so)
-        sed -i "s/libhidltransport.so/qtimutex.so\x00\x00\x00\x00\x00\x00\x00\x00/" "${2}"
-        ;;
-    vendor/lib64/hw/camera.qcom.so)
-        sed -i "s/libhidltransport.so/qtimutex.so\x00\x00\x00\x00\x00\x00\x00\x00/" "${2}"
         ;;
     esac
 }
