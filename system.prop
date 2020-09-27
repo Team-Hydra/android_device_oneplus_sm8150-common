@@ -11,6 +11,9 @@ vendor.bluetooth.soc=cherokee
 ro.sf.blurs_are_expensive=1
 ro.surface_flinger.supports_background_blur=1
 
+# Use Vulkan backend for Skia UI rendering
+debug.hwui.renderer=skiavk
+
 # Camera
 vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.oneplus.factorymode,com.oneplus.camera,com.oneplus.healthcheck
 
