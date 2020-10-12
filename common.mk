@@ -93,7 +93,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     AntHalService
 
-# YAAP Device Settings
+# AOSiP Device Settings
 PRODUCT_PACKAGES += \
     DeviceSettings
 
