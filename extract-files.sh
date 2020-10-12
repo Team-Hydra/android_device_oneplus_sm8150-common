@@ -44,12 +44,15 @@ function blob_fixup() {
     product/lib64/libdpmframework.so)
         sed -i "s/libhidltransport.so/libcutils-v29.so\x00\x00\x00/" "${2}"
         ;;
-    vendor/lib/hw/camera.qcom.so)
-        sed -i "s/libhidltransport.so/qtimutex.so\x00\x00\x00\x00\x00\x00\x00\x00/" "${2}"
-        ;;
-    vendor/lib64/hw/camera.qcom.so)
-        sed -i "s/libhidltransport.so/qtimutex.so\x00\x00\x00\x00\x00\x00\x00\x00/" "${2}"
-        ;;
+    etc/permissions/qti_libpermissions.xml)
+        sed -i -e 's|name=\"android.hidl.manager-V1.0-java|name=\"android.hidl.manager@1.0-java|g' "${2}"
+    ;;
+    vendor/lib/hw/camera.qcom.so | vendor/lib64/hw/camera.qcom.so )
+        patchelf --replace-needed "libhidlbase.so" "libhidlbase-v29.so" "${2}"
+    ;;
+    vendor/lib/vendor.oneplus.camera.CameraHIDL@1.0.so | vendor/lib64/vendor.oneplus.camera.CameraHIDL@1.0.so)
+        patchelf --replace-needed "libhidlbase.so" "libhidlbase-v29.so" "${2}"
+    ;;
     esac
 }
 
