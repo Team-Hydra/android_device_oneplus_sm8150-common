@@ -200,9 +200,14 @@ VENDOR_SECURITY_PATCH := 2020-09-01
 
 ##BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy-minimal
 # SELinux
-include device/qcom/sepolicy-legacy-um/SEPolicy.mk
-BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/private
+# SELinux
+#include device/qcom/sepolicy_vndr/SEPolicy.mk
+#BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/
 
+#BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(VENDOR_PATH)/sepolicy/private
+#BOARD_PLAT_PUBLIC_SEPOLICY_DIR += $(VENDOR_PATH)/sepolicy/public
+#BOARD_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy/vendor
+BOARD_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy/temp
 # Sensors
 SOONG_CONFIG_NAMESPACES += ONEPLUS_MSMNILE_SENSORS
 SOONG_CONFIG_ONEPLUS_MSMNILE_SENSORS := ALS_POS_X ALS_POS_Y
