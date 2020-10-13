@@ -197,8 +197,10 @@ TARGET_USES_PRE_UPLINK_FEATURES_NETMGRD := true
 VENDOR_SECURITY_PATCH := 2020-09-01
 
 # SELinux
-include device/qcom/sepolicy-legacy-um/SEPolicy.mk
 
+##BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy-minimal
+# SELinux
+include device/qcom/sepolicy-legacy-um/SEPolicy.mk
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/private
 
 # Sensors
