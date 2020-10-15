@@ -61,8 +61,8 @@ public class Startup extends BroadcastReceiver {
             Utils.setDisplayMode(18, 0);
             Utils.setDisplayMode(20, 0);
             Utils.setDisplayMode(21, 0);
-            Utils.setDisplayMode(20, 1);
-            SystemProperties.set("persist.vendor.sys.color_mode", "20");
+            Utils.setDisplayMode(18, 1);
+            SystemProperties.set("persist.vendor.sys.color_mode", "18");
         }
         enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_HBM_SWITCH, false);
         restore(HBMModeSwitch.getFile(), enabled);
@@ -75,8 +75,8 @@ public class Startup extends BroadcastReceiver {
             Utils.setDisplayMode(18, 0);
             Utils.setDisplayMode(20, 0);
             Utils.setDisplayMode(21, 0);
-            Utils.setDisplayMode(21, 1);
-            SystemProperties.set("persist.vendor.sys.color_mode", "21");
+            Utils.setDisplayMode(16, 1);
+            SystemProperties.set("persist.vendor.sys.color_mode", "16");
         }
         enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_FPS_INFO, false);
         if (enabled) {

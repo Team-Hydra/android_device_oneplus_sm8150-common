@@ -131,29 +131,29 @@ public class PanelSettings extends PreferenceFragment implements RadioGroup.OnCh
             Utils.setDisplayMode(18, 0);
             Utils.setDisplayMode(20, 0);
             Utils.setDisplayMode(21, 0);
-            Utils.setDisplayMode(20, 1);
-            edit.putBoolean(DeviceSettings.KEY_DCI_SWITCH, false);
+            Utils.setDisplayMode(18, 1);
+            SystemProperties.set("persist.vendor.sys.color_mode", "18");
             edit.putBoolean(DeviceSettings.KEY_SRGB_SWITCH, true);
-            SystemProperties.set("persist.vendor.sys.color_mode", "20");
+            edit.putBoolean(DeviceSettings.KEY_DCI_SWITCH, false);
         } else if (checkedId == R.id.dci_mode) {
             Utils.setDisplayMode(16, 0);
             Utils.setDisplayMode(17, 0);
             Utils.setDisplayMode(18, 0);
             Utils.setDisplayMode(20, 0);
             Utils.setDisplayMode(21, 0);
-            Utils.setDisplayMode(21, 1);
-            edit.putBoolean(DeviceSettings.KEY_SRGB_SWITCH, false);
+            Utils.setDisplayMode(16, 1);
+            SystemProperties.set("persist.vendor.sys.color_mode", "16");
             edit.putBoolean(DeviceSettings.KEY_DCI_SWITCH, true);
-            SystemProperties.set("persist.vendor.sys.color_mode", "21");
+            edit.putBoolean(DeviceSettings.KEY_SRGB_SWITCH, false);
         } else if (checkedId == R.id.off_mode) {
             Utils.setDisplayMode(16, 0);
             Utils.setDisplayMode(17, 0);
             Utils.setDisplayMode(18, 0);
             Utils.setDisplayMode(20, 0);
             Utils.setDisplayMode(21, 0);
-            edit.putBoolean(DeviceSettings.KEY_DCI_SWITCH, false);
-            edit.putBoolean(DeviceSettings.KEY_SRGB_SWITCH, false);
             SystemProperties.set("persist.vendor.sys.color_mode", "0");
+            edit.putBoolean(DeviceSettings.KEY_SRGB_SWITCH, false);
+            edit.putBoolean(DeviceSettings.KEY_DCI_SWITCH, false);
         }
         edit.commit();
     }
