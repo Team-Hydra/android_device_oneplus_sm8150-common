@@ -25,7 +25,6 @@ import android.provider.Settings;
 import android.text.TextUtils;
 import androidx.preference.PreferenceManager;
 
-import com.aosip.device.DeviceSettings.TouchscreenGestureSettings;
 
 public class Startup extends BroadcastReceiver {
 
@@ -51,7 +50,7 @@ public class Startup extends BroadcastReceiver {
     @Override
     public void onReceive(final Context context, final Intent bootintent) {
         boolean enabled = false;
-        TouchscreenGestureSettings.MainSettingsFragment.restoreTouchscreenGestureStates(context);
+        
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
         enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_SRGB_SWITCH, false);
         restore(SRGBModeSwitch.getFile(), enabled);
