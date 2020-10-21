@@ -37,7 +37,7 @@ import androidx.preference.PreferenceFragment;
 import androidx.preference.PreferenceManager;
 import androidx.preference.SwitchPreference;
 
-import com.android.internal.aosip.hardware.LineageHardwareManager; // Need FWB support
+/* import com.android.internal.aosip.hardware.LineageHardwareManager; // Need FWB support
 import com.android.internal.aosip.hardware.TouchscreenGesture; // Need FWB support
 
 import com.aosip.device.DeviceSettings.R;
@@ -254,5 +254,4 @@ public class TouchscreenGestureSettings extends PreferenceActivity
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-}
+    } */
