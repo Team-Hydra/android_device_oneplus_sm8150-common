@@ -169,7 +169,6 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service_64 \
     libxml2 \
-    Snap \
     vendor.oneplus.camera.CameraHIDL@1.0.vendor \
     vendor.qti.hardware.camera.device@1.0.vendor
 
@@ -225,22 +224,20 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-8192-dalvik-heap.mk)
 
 # Display
 PRODUCT_PACKAGES += \
-    android.hardware.graphics.composer@2.4-impl \
-    android.hardware.graphics.composer@2.4-service \
-    android.hardware.graphics.mapper@3.0-impl-qti-display \
-    android.hardware.graphics.mapper@4.0-impl-qti-display \
+    android.hardware.graphics.composer@2.3-service \
+    android.hardware.graphics.mapper@2.0-impl-qti-display \
     android.hardware.memtrack@1.0-impl \
     android.hardware.memtrack@1.0-service \
     gralloc.msmnile \
     hwcomposer.msmnile \
-    libdisplayconfig.qti \
-    libdisplayconfig.qti.vendor \
+    libdisplayconfig \
+    libdisplayconfig.vendor \
     libqdMetaData \
     libqdMetaData.system \
     libtinyxml \
     libvulkan \
     memtrack.msmnile \
-    vendor.display.config@2.0 \
+    vendor.display.config@1.7 \
     vendor.qti.hardware.display.allocator-service \
     vendor.qti.hardware.display.allocator@1.0-service \
     vendor.qti.hardware.display.allocator@1.0.vendor \
@@ -453,7 +450,7 @@ PRODUCT_PACKAGES += \
     qti_telephony_utils.xml \
     telephony-ext
 
-PRODUCT_BOOT_JARS += \
+#PRODUCT_BOOT_JARS += \
     telephony-ext
 
 PRODUCT_COPY_FILES += \
