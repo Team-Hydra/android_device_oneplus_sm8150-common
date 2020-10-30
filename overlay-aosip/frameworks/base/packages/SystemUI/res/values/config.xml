@@ -26,5 +26,5 @@
     <bool name="doze_brightness_sensor_reports_proximity">false</bool>
     
         <!-- FOD icon dim-->
-    <bool name="config_targetUsesInKernelDimming">true</bool>
+    <!--bool name="config_targetUsesInKernelDimming">false</bool -->
 </resources>
