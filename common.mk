@@ -92,8 +92,8 @@ PRODUCT_PACKAGES += \
     AntHalService
 
 # AOSiP Device Settings
-PRODUCT_PACKAGES += \
-    DeviceSettings
+#PRODUCT_PACKAGES += \
+#    DeviceSettings
 
 # Atrace
 PRODUCT_PACKAGES += \
