@@ -196,6 +196,9 @@ public class TouchKeyHandler implements DeviceKeyHandler {
         @Override
         public void handleMessage(final Message msg) {
             switch (msg.arg1) {
+                case Constants.ACTION_CAMERA:
+                    launchCamera();
+                    break;
                 case Constants.ACTION_FLASHLIGHT:
                     toggleFlashlight();
                     break;
@@ -233,7 +236,13 @@ public class TouchKeyHandler implements DeviceKeyHandler {
         }
     }
 
-
+    private void launchCamera() {
+        mGestureWakeLock.acquire(GESTURE_WAKELOCK_DURATION);
+        final Intent intent = new Intent(android.content.Intent.ACTION_SCREEN_CAMERA_GESTURE);
+        mContext.sendBroadcastAsUser(intent, UserHandle.CURRENT,
+                Manifest.permission.STATUS_BAR_SERVICE);
+        doHapticFeedback();
+    }
 
     private void launchBrowser() {
         mGestureWakeLock.acquire(GESTURE_WAKELOCK_DURATION);
@@ -241,7 +250,7 @@ public class TouchKeyHandler implements DeviceKeyHandler {
         final Intent intent = getLaunchableIntent(
                 new Intent(Intent.ACTION_VIEW, Uri.parse("http:")));
         startActivitySafely(intent);
-        //doHapticFeedback();
+        doHapticFeedback();
     }
 
     private void launchDialer() {
@@ -249,7 +258,7 @@ public class TouchKeyHandler implements DeviceKeyHandler {
         mPowerManager.wakeUp(SystemClock.uptimeMillis(), GESTURE_WAKEUP_REASON);
         final Intent intent = new Intent(Intent.ACTION_DIAL, null);
         startActivitySafely(intent);
-        //doHapticFeedback();
+        doHapticFeedback();
     }
 
     private void launchEmail() {
@@ -258,7 +267,7 @@ public class TouchKeyHandler implements DeviceKeyHandler {
         final Intent intent = getLaunchableIntent(
                 new Intent(Intent.ACTION_VIEW, Uri.parse("mailto:")));
         startActivitySafely(intent);
-        //doHapticFeedback();
+        doHapticFeedback();
     }
 
     private void launchMessages() {
@@ -267,7 +276,7 @@ public class TouchKeyHandler implements DeviceKeyHandler {
         final Intent intent = getLaunchableIntent(
                 new Intent(Intent.ACTION_VIEW, Uri.parse("sms:")));
         startActivitySafely(intent);
-        //doHapticFeedback();
+        doHapticFeedback();
     }
 
     private void toggleFlashlight() {
@@ -280,35 +289,35 @@ public class TouchKeyHandler implements DeviceKeyHandler {
             } catch (CameraAccessException e) {
                 // Ignore
             }
-            //doHapticFeedback();
+            doHapticFeedback();
         }
     }
 
     private void playPauseMusic() {
         dispatchMediaKeyWithWakeLockToMediaSession(KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE);
-        //doHapticFeedback();
+        doHapticFeedback();
     }
 
     private void previousTrack() {
         dispatchMediaKeyWithWakeLockToMediaSession(KeyEvent.KEYCODE_MEDIA_PREVIOUS);
-        //doHapticFeedback();
+        doHapticFeedback();
     }
 
     private void nextTrack() {
         dispatchMediaKeyWithWakeLockToMediaSession(KeyEvent.KEYCODE_MEDIA_NEXT);
-        //doHapticFeedback();
+        doHapticFeedback();
     }
 
     private void volumeDown() {
         mGestureWakeLock.acquire(GESTURE_WAKELOCK_DURATION);
         mAudioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_LOWER, 0);
-        //doHapticFeedback();
+        doHapticFeedback();
     }
 
     private void volumeUp() {
         mGestureWakeLock.acquire(GESTURE_WAKELOCK_DURATION);
         mAudioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_RAISE, 0);
-        //doHapticFeedback();
+        doHapticFeedback();
     }
 
     private void launchDozePulse() {
@@ -318,7 +327,7 @@ public class TouchKeyHandler implements DeviceKeyHandler {
             mGestureWakeLock.acquire(GESTURE_WAKELOCK_DURATION);
             final Intent intent = new Intent(PULSE_ACTION);
             mContext.sendBroadcastAsUser(intent, UserHandle.CURRENT);
-            //doHapticFeedback();
+            doHapticFeedback();
         }
     }
 
@@ -351,7 +360,19 @@ public class TouchKeyHandler implements DeviceKeyHandler {
         }
     }
 
+    private void doHapticFeedback() {
+        if (mVibrator == null || !mVibrator.hasVibrator()) {
+            return;
+        }
 
+        if (mAudioManager.getRingerMode() != AudioManager.RINGER_MODE_SILENT) {
+            final boolean enabled = Settings.System.getInt(mContext.getContentResolver(),
+                    Settings.System.TOUCHSCREEN_GESTURE_HAPTIC_FEEDBACK, 1) != 0;
+            if (enabled) {
+                mVibrator.vibrate(50);
+            }
+        }
+    }
 
     private String getRearCameraId() {
         if (mRearCameraId == null) {
