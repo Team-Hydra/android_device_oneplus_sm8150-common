@@ -50,6 +50,15 @@ function blob_fixup() {
     vendor/lib64/hw/camera.qcom.so)
         sed -i "s/libhidltransport.so/qtimutex.so\x00\x00\x00\x00\x00\x00\x00\x00/" "${2}"
         ;;
+    etc/permissions/qti_libpermissions.xml)
+        sed -i -e 's|name=\"android.hidl.manager-V1.0-java|name=\"android.hidl.manager@1.0-java|g' "${2}"
+        ;;
+    product/etc/permissions/vendor.qti.hardware.data.connection-V1.0-java.xml)
+        sed -i -e 's|xml version=\"2.0\"|xml version=\"1.0\"|g' "${2}"
+        ;;
+    product/etc/permissions/vendor.qti.hardware.data.connection-V1.1-java.xml)
+        sed -i -e 's|xml version=\"2.0\"|xml version=\"1.0\"|g' "${2}"
+        ;;
     esac
 }
 
