@@ -211,7 +211,8 @@ PRODUCT_PACKAGES += \
 
 # ConfigStore
 PRODUCT_PACKAGES += \
-    libplatformconfig
+    libplatformconfig \
+    vendor.qti.hardware.capabilityconfigstore@1.0
 
 # Cryptfshw
 PRODUCT_PACKAGES += \
