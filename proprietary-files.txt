@@ -1016,7 +1016,7 @@ vendor/lib64/libQTEEConnector_vendor.so
 vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so
 
 # Radio
--product/app/QtiTelephonyService/QtiTelephonyService.apk|9233f71f7bf7071e2ed53dc5383b06c175ade1bf
+-product/app/QtiTelephonyService/QtiTelephonyService.apk
 -vendor/app/IWlanService/IWlanService.apk
 product/etc/permissions/embms.xml
 etc/permissions/privapp-permissions-qti.xml
@@ -1024,7 +1024,7 @@ product/etc/permissions/qcrilhook.xml
 product/etc/permissions/telephonyservice.xml
 etc/sysconfig/qti_whitelist.xml
 product/framework/embmslibrary.jar
-product/framework/QtiTelephonyServicelibrary.jar|ee040ed40595a0c5871780b1d5be753954ae523d
+product/framework/QtiTelephonyServicelibrary.jar
 -product/priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 vendor/bin/hw/qcrild
 vendor/bin/hw/vendor.oneplus.hardware.param@1.0-service
