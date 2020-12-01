@@ -2,8 +2,8 @@
 <!-- Comments, Legal notices, etc. here -->
 <manifest version="1.0" type="device">
     <!--UICC secure element -->
-   <hal format="hidl">
+    <hal format="hidl">
        <name>android.hardware.secure_element</name>
-       <transport>hwbinder</transport>
+       <transport arch="32+64">passthrough</transport>
     </hal>
 </manifest>
