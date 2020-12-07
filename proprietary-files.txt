@@ -731,9 +731,11 @@ vendor/lib64/libhbtpclient.so
 vendor/lib64/libhbtpdsp.so
 vendor/lib64/libhbtpfrmwk.so
 
-# HotwordEnrollment
--priv-app/HotwordEnrollmentOKGoogleWCD9340/HotwordEnrollmentOKGoogleWCD9340.apk
--priv-app/HotwordEnrollmentXGoogleWCD9340/HotwordEnrollmentXGoogleWCD9340.apk
+# HotwordEnrollment - from crosshatch R
+etc/permissions/com.android.hotwordenrollment.common.util.xml|d81ab94febd28ec95e6518aa98d2131e49c186fb
+framework/com.android.hotwordenrollment.common.util.jar|714382db8d12aca9f5388dd72060e867e30d88e4
+-priv-app/HotwordEnrollmentOKGoogleWCD9340/HotwordEnrollmentOKGoogleWCD9340.apk|abd5ea62af471a19a51096702a5681088a4c19c3
+-priv-app/HotwordEnrollmentXGoogleWCD9340/HotwordEnrollmentXGoogleWCD9340.apk|c96a20be78b43efdadab79e1316b72c9839b4d27
 
 # IFAA
 vendor/etc/init/vendor.oneplus.hardware.ifaa@2.0-service.rc
