@@ -181,6 +181,9 @@ PRODUCT_PACKAGES += \
     services-ext
 
 # Common init scripts
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/ueventd.rc:$(TARGET_COPY_OUT_VENDOR)/ueventd.rc
+
 PRODUCT_PACKAGES += \
     coredump.sh \
     ftm_power_config.sh \
@@ -208,7 +211,7 @@ PRODUCT_PACKAGES += \
     init.recovery.qcom.rc \
     init.target.rc \
     kmemleak.sh \
-    ueventd.qcom.rc \
+    ueventd.rc \
     vendor.oem_ftm.rc \
     vendor.oem_ftm_svc_disable.rc
 
