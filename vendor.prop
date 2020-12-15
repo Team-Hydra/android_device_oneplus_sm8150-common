@@ -112,7 +112,6 @@ ro.hardware.keystore_desede=true
 
 # NFC
 ro.camera.notify_nfc=1
-ro.hardware.nfc_nci=nqx.default
 ro.vendor.nfc.notify_tp=1
 
 # PASR
