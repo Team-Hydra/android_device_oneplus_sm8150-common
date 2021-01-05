@@ -1040,7 +1040,7 @@ vendor/lib64/libhexagon_nn_stub.so
 -app/NxpNfcNci/NxpNfcNci.apk|f349310c6b67ad1d7c7a6b58be3ff686481d0e96
 -app/NxpSecureElement/NxpSecureElement.apk
 etc/nfc_card_config.conf
-etc/nfcee_access.xml
+etc/nfcee_access.xml|fc4db999ce5a1947a3b420e2a42d18afb05d6517
 etc/permissions/com.nxp.nfc.xml
 framework/com.nxp.nfc.jar|9299477fdb0c87845d71c135eedd4ca1d3e6097c
 lib64/libnxpnfc-nci.so|ecbd274d2bb19552137b437360049b88395ebba0
