@@ -1287,9 +1287,9 @@ vendor/radio/qcril_database/upgrade/2_version_add_wps_config.sql
 vendor/radio/qcril_database/upgrade/3_version_update_wps_config.sql
 vendor/radio/qcril_database/upgrade/4_version_update_ecc_table.sql
 
-# Radio - from LA.UM.9.8.r1-02700-SDM710.0
-system_ext/framework/qti-telephony-common.jar|98be39c37e0bcbbbf6180bd25bca3f5c9a472362
--system_ext/priv-app/ims/ims.apk|f19b7830b11e84871930af7a6e90cccd66aa0044
+# Radio - from LA.QSSI.11.0.r1-09400-qssi.0
+system_ext/framework/qti-telephony-common.jar|710406e01836b558c802ba4960fa59f31545389e
+-system_ext/priv-app/ims/ims.apk|cccc15a4fbaff0f412e09e63744fc95c3c339da8
 
 # Radio - IMS
 -product/app/uceShimService/uceShimService.apk
