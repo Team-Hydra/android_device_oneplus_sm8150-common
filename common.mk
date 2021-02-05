@@ -89,7 +89,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml \
     vendor/lineage/config/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml \
-    $(LOCAL_PATH)/configs/hiddenapi-package-whitelist-oneplus.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/hiddenapi-package-whitelist-oneplus.xml
+    $(LOCAL_PATH)/configs/hiddenapi-package-whitelist-oneplus.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/hiddenapi-package-whitelist-oneplus.xml \
+    $(LOCAL_PATH)/configs/hiddenapi-package-whitelist-hotword.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/hiddenapi-package-whitelist-hotword.xml
 
 # ANT+
 PRODUCT_PACKAGES += \
@@ -114,11 +115,17 @@ PRODUCT_PACKAGES += \
     audio.usb.default \
     libaudio-resampler \
     libaudioroute \
+    libbatterylistener \
+    libcirrusspkrprot \
+    libcomprcapture \
+    libexthwplugin \
     libhdmiedid \
     libhfp \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
+    libsndmonitor \
+    libspkrprot \
     libvolumelistener \
     tinymix \
     libtinycompress \
@@ -129,6 +136,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
     $(LOCAL_PATH)/audio/audio_io_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_io_policy.conf \
     $(LOCAL_PATH)/audio/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml \
+    $(LOCAL_PATH)/audio/audio_platform_info_oppo.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info_oppo.xml \
     $(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
     $(LOCAL_PATH)/audio/audio_tuning_mixer.txt:$(TARGET_COPY_OUT_VENDOR)/etc/audio_tuning_mixer.txt \
     $(LOCAL_PATH)/audio/audio_tuning_mixer_tavil.txt:$(TARGET_COPY_OUT_VENDOR)/etc/audio_tuning_mixer_tavil.txt \
@@ -178,6 +186,9 @@ PRODUCT_PACKAGES += \
     services-ext
 
 # Common init scripts
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/ueventd.rc:$(TARGET_COPY_OUT_VENDOR)/ueventd.rc
+
 PRODUCT_PACKAGES += \
     coredump.sh \
     ftm_power_config.sh \
@@ -187,6 +198,7 @@ PRODUCT_PACKAGES += \
     init.oem.debug.rc \
     init.oem.engineermode.sh \
     init.oem.rc \
+    init.opcamera.rc \
     init.qcom.class_core.sh \
     init.qcom.coex.sh \
     init.qcom.crashdata.sh \
@@ -205,7 +217,7 @@ PRODUCT_PACKAGES += \
     init.recovery.qcom.rc \
     init.target.rc \
     kmemleak.sh \
-    ueventd.qcom.rc \
+    ueventd.rc \
     vendor.oem_ftm.rc \
     vendor.oem_ftm_svc_disable.rc
 
@@ -272,22 +284,19 @@ PRODUCT_COPY_FILES += \
 
 # Health
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.0-service
+    android.hardware.health@2.1-service \
+    android.hardware.health@2.1-impl \
 
 # HIDL
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
     android.hidl.base@1.0_system \
     android.hidl.manager@1.0 \
-    android.hidl.manager@1.0_system \
-    libhidltransport \
-    libhidltransport.vendor \
-    libhwbinder \
-    libhwbinder.vendor
+    android.hidl.manager@1.0_system
 
 # HotwordEnrollement app permissions
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/privapp-permissions-hotword.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-hotword.xml
+    $(LOCAL_PATH)/configs/privapp-permissions-hotword.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-hotword.xml
 
 # Input
 PRODUCT_COPY_FILES += \
@@ -317,13 +326,17 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.oneplus_msmnile
+    android.hardware.lights-service.qti
 
 # LiveDisplay
 PRODUCT_PACKAGES += \
     vendor.lineage.livedisplay@2.0-service.oneplus_msmnile
 
 # Media
+PRODUCT_PACKAGES += \
+    libavservices_minijail \
+    libavservices_minijail_vendor
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
     $(LOCAL_PATH)/configs/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml \
@@ -353,7 +366,6 @@ PRODUCT_PACKAGES += \
     android.hardware.nfc@1.1:64 \
     android.hardware.nfc@1.2:64 \
     android.hardware.secure_element@1.0:64 \
-    android.hardware.secure_element@1.1:64 \
     com.android.nfc_extras \
     Tag \
     vendor.nxp.nxpese@1.0:64 \
@@ -367,6 +379,7 @@ PRODUCT_PACKAGES += \
     libc2dcolorconvert \
     libcodec2_hidl@1.0.vendor \
     libcodec2_vndk.vendor \
+    libmm-omxcore \
     libOmxAacEnc \
     libOmxAmrEnc \
     libOmxCore \
@@ -376,6 +389,7 @@ PRODUCT_PACKAGES += \
     libOmxVdec \
     libOmxVenc \
     libOmxVidcCommon \
+    libstagefright_softomx \
     libstagefrighthw
 
 # OnePlus
@@ -389,23 +403,11 @@ PRODUCT_BOOT_JARS += \
 PRODUCT_PACKAGES += \
     android.hardware.power-service-qti
 
-# Protobuf
-PRODUCT_PACKAGES += \
-    libprotobuf-cpp-full-vendorcompat \
-    libprotobuf-cpp-lite-vendorcompat
-
 # QMI
 PRODUCT_PACKAGES += \
     libjson \
     libqti_vndfwk_detect \
     libqti_vndfwk_detect.vendor
-
-# RCS
-PRODUCT_PACKAGES += \
-    rcs_service_aidl \
-    rcs_service_aidl.xml \
-    rcs_service_api \
-    rcs_service_api.xml
 
 # RIL
 PRODUCT_PACKAGES += \
@@ -413,16 +415,7 @@ PRODUCT_PACKAGES += \
     android.hardware.radio.config@1.0 \
     android.hardware.secure_element@1.0 \
     libprotobuf-cpp-full \
-    librmnetctl \
     libxml2
-
-# Vendor libstdc++
-PRODUCT_PACKAGES += \
-    libstdc++.vendor
-
-# Vibrator
-PRODUCT_PACKAGES += \
-    vendor.qti.hardware.vibrator.service
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \
@@ -444,10 +437,19 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.servicetracker@1.0.vendor
 
+# Signapk
+PRODUCT_HOST_PACKAGES += \
+    signapk
+
 # Soong namespaces
+SRC_MEDIA_HAL_DIR := hardware/qcom-caf/sm8150/media
+SRC_DISPLAY_HAL_DIR := hardware/qcom-caf/sm8150/display
+SRC_AUDIO_HAL_DIR := hardware/qcom-caf/sm8150/audio
+
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
-    device/oneplus/common
+    device/oneplus/common \
+    hardware/qcom-caf/sm8150
 
 # Remove unwanted packages
 PRODUCT_PACKAGES += \
@@ -466,12 +468,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     telephony-ext
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/privapp-permissions-ims.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-ims.xml
-
 # TextClassifier
 PRODUCT_PACKAGES += \
     textclassifier.bundle1
+
+# Thermal
+PRODUCT_PACKAGES += \
+    android.hardware.thermal@2.0-service.sm8150
 
 # Touch
 PRODUCT_PACKAGES += \
@@ -499,18 +502,34 @@ PRODUCT_PACKAGES_DEBUG += \
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service \
 
-# VNDK
-PRODUCT_COPY_FILES += \
-    prebuilts/vndk/v29/arm64/arch-arm-armv8-a/shared/vndk-sp/libcutils.so:$(TARGET_COPY_OUT_SYSTEM)/lib/libcutils-v29.so \
-    prebuilts/vndk/v29/arm64/arch-arm64-armv8-a/shared/vndk-sp/libcutils.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libcutils-v29.so
+# Vendor libgui
+PRODUCT_PACKAGES += \
+    libgui_vendor
+
+# Vendor libstdc++
+PRODUCT_PACKAGES += \
+    libstdc++.vendor
+
+#VNDK
+PRODUCT_PACKAGES += \
+    libhidltransport \
+    libhidltransport.vendor \
+    libhwbinder \
+    libhwbinder.vendor
+
+PRODUCT_PACKAGES += \
+    libprotobuf-cpp-lite-vendorcompat \
+    libprotobuf-cpp-full-vendorcompat
 
 # Wifi
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \
     hostapd \
     libwpa_client \
+    libwifi-hal \
     libwifi-hal-ctrl \
     libwifi-hal-qcom \
+    libwifi-system-iface \
     vendor.qti.hardware.wifi.hostapd@1.0.vendor \
     vendor.qti.hardware.wifi.hostapd@1.1.vendor \
     vendor.qti.hardware.wifi.supplicant@2.0.vendor \
@@ -533,3 +552,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     WfdCommon
+
+# Blur
+PRODUCT_PROPERTY_OVERRIDES += persist.sys.sf.disable_blurs=0
