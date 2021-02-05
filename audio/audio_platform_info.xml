@@ -135,9 +135,6 @@
         <param key="true_32_bit" value="true"/>
         <!-- In the below value string, the value indicates sidetone gain in dB -->
         <param key="usb_sidetone_gain" value="35"/>
-        <!--#ifdef VENDOR_EDIT begin-->
-        <!--param key="noise_reduction_aec" value="enable"/-->
-        <!--#ifdef VENDOR_EDIT end-->
     </config_params>
     <gain_db_to_level_mapping>
         <gain_level_map db="-59" level="5"/>
