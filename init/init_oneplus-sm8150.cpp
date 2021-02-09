@@ -35,10 +35,10 @@
 #include <sys/system_properties.h>
 #include <sys/_system_properties.h>
 
-#include "property_service.h"
 #include "vendor_init.h"
 
 using android::base::GetProperty;
+using android::base::SetProperty;
 
 void property_override(char const prop[], char const value[]) {
   prop_info *pi;
@@ -48,6 +48,12 @@ void property_override(char const prop[], char const value[]) {
     __system_property_update(pi, value, strlen(value));
   else
     __system_property_add(prop, strlen(prop), value, strlen(value));
+}
+
+void property_override_multi(char const system_prop[], char const vendor_prop[],char const bootimage_prop[], char const value[]) {
+    property_override(system_prop, value);
+    property_override(vendor_prop, value);
+    property_override(bootimage_prop, value);
 }
 
 void load_dalvikvm_properties() {
@@ -81,4 +87,7 @@ void load_dalvikvm_properties() {
 void vendor_load_properties() {
   // dalvikvm props
   load_dalvikvm_properties();
+
+  // fingerprint
+  property_override_multi("ro.build.fingerprint", "ro.vendor.build.fingerprint","ro.bootimage.build.fingerprint", "google/coral/coral:11/RQ1A.210205.004/7038034:user/release-keys");
 }
